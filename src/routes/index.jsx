@@ -11,13 +11,9 @@ const Stack = createStackNavigator();
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={TodoList}></Stack.Screen>
-        <Stack.Screen
-          name="Todos"
-          component={() => <h1> Todos Page </h1>}
-        ></Stack.Screen>
-        <Stack.Screen name="details" component={Details}></Stack.Screen>
+      <Stack.Navigator initialRouteName="Todos">
+        <Stack.Screen name="Todos" component={TodoList}></Stack.Screen>
+        <Stack.Screen name="Details" component={Details}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
