@@ -16,6 +16,12 @@ const styles = StyleSheet.create({
     width: 66,
     height: 58,
   },
+  button: {
+    height: 40,
+    flex: 1,
+    color: "#616261",
+    background: "transparent",
+  },
 });
 
 const TodoList = ({ navigation }) => {
@@ -24,54 +30,11 @@ const TodoList = ({ navigation }) => {
       <h1> Todo List </h1>
       <ul>
         <li>
-          {" "}
-          <Image
-            styles={styles.tinyLogo}
-            source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
-          />
+          <Image styles={styles.tinyLogo} source={electron} />
           <Button
+            styles={styles.button}
             title="Iniciar com React Native"
-            onPress={() => navigation.navigate("details")}
-          />
-        </li>
-        <li>
-          {" "}
-          <Image styles={ImageStyles} source={js} />
-          <Button
-            title="Trabalhar no projecto DLIne Code"
-            onPress={() => navigation.navigate("details")}
-          />
-        </li>
-        <li>
-          {" "}
-          <Image styles={ImageStyles} source={js} />
-          <Button
-            title="Fazer a Calculadora em C# de TLP"
-            onPress={() => navigation.navigate("details")}
-          />
-        </li>
-        <li>
-          {" "}
-          <Image styles={ImageStyles} source={electron} />
-          <Button
-            title="Fazer o Trabalho de Educação Física"
-            onPress={() => navigation.navigate("details")}
-          />
-        </li>
-        <li>
-          {" "}
-          <Image styles={ImageStyles} source={js} />
-          <Button
-            title="Pausar Com a suposta baby.!"
-            onPress={() => navigation.navigate("details")}
-          />
-        </li>
-        <li>
-          {" "}
-          <Image styles={ImageStyles} source={electron} />
-          <Button
-            title="Reslver os Casos de Física"
-            onPress={() => navigation.navigate("details")}
+            onPress={() => navigation.navigate("Details")}
           />
         </li>
       </ul>
