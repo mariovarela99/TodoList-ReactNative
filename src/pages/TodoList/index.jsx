@@ -1,7 +1,7 @@
 import React from "react";
 import {
   View,
-  Button,
+  TouchableOpacity,
   Text,
   Image,
   StyleSheet,
@@ -28,18 +28,31 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   TodoImage: {
-    width: 50,
-    height: 50,
+    width: 75,
+    height: 75,
+    margin: 10,
   },
   logo: {
     width: 66,
     height: 58,
   },
   button: {
-    height: 40,
     flex: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyCOntent: "center",
+    height: 40,
+    padding: 8,
+    backgroundColor: "#232323",
+  },
+  insideText: {
+    height: 40,
     color: "#616261",
-    background: "transparent",
+  },
+  todoContainer: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
 
@@ -73,21 +86,23 @@ const TodoList = ({ navigation }) => {
 
   const Item = ({ item }) => (
     <View style={styles.item}>
-      <Image
-        styles={styles.TodoImage}
-        resizeMode="contain"
-        source={require("../../assets/images/js.png")}
-      />
-      <Text style={styles.title}>{item.title}</Text>
-      <Button
-        styles={styles.button}
-        title={item.title}
+      <View style={styles.todoContainer}>
+        <Image
+          style={styles.TodoImage}
+          source={require("../../assets/images/js.png")}
+        />
+        <Text style={styles.title}>{item.title}</Text>
+      </View>
+      <TouchableOpacity
+        style={styles.button}
         onPress={() =>
           navigation.navigate("Details", {
             todo: { item },
           })
         }
-      />
+      >
+        <Text style={styles.insideText}> Detalhes </Text>
+      </TouchableOpacity>
     </View>
   );
 
@@ -96,13 +111,15 @@ const TodoList = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
-    </SafeAreaView>
+    <>
+      <SafeAreaView style={styles.container}>
+        <FlatList
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+      </SafeAreaView>
+    </>
   );
 };
 
