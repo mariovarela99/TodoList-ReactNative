@@ -3,12 +3,10 @@ import { Image, Text, View, StyleSheet } from "react-native";
 import { Container } from "./styles";
 
 const styles = StyleSheet.create({
-  ImageContainer: {
-    flex: 1,
-    background: "#232323",
+  image: {
+    marginTop: 10,
     height: 200,
     width: 200,
-    margin: 5,
   },
   desc: {
     flex: 1,
@@ -20,7 +18,7 @@ const styles = StyleSheet.create({
   },
   dates: {
     flex: 1,
-    margin: 5,
+    margin: 2,
   },
   date: {
     flex: 1,
@@ -36,20 +34,21 @@ const Details = ({ navigation, route }) => {
   const [todo, setTodo] = useState({});
 
   useEffect(() => {
-    console.log("route => ", route.params.todo.item);
+    console.log("Selected Todo => ", route.params.todo.item);
     setTodo(route.params.todo.item);
   }, []);
 
   return (
     <Container>
+      <Image
+        style={styles.image}
+        source={require("../../assets/images/js.png")}
+      />
       <h1> {todo.title} </h1>
-      <View styles={styles.ImageContainer}>
-        <Image source={{ uri: "https://github.com/account" }} />
-      </View>
-      <Text styles={styles.desc}> {todo.desc} </Text>
-      <View styles={styles.dates}>
-        <Text styles={styles.date}> Criado em: {todo.createdAt} </Text>
-        <Text styles={styles.date}> Para: {todo.doAt} </Text>
+      <Text style={styles.desc}> {todo.desc} </Text>
+      <View style={styles.dates}>
+        <Text style={styles.date}> Criado em: {todo.createdAt} </Text>
+        <Text style={styles.date}> Para: {todo.doAt} </Text>
       </View>
     </Container>
   );
